@@ -1,0 +1,44 @@
+/* Tether — MIT © 2026 Yagnik Barasiya. The bubble moves with transform and opacity. */
+.tether-bubble {
+  --tether-bg: #111;
+  --tether-fg: #fff;
+  --tether-string: #111;
+  --tether-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483001;
+  max-width: min(280px, calc(100vw - 16px));
+  padding: 10px 14px;
+  border-radius: var(--tether-radius);
+  background: var(--tether-bg);
+  color: var(--tether-fg);
+  font-size: 14px;
+  line-height: 1.45;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.tether-bubble[hidden] { display: none; }
+.tether-bubble.is-interactive { pointer-events: auto; }
+.tether-bubble.is-leaving { pointer-events: none; }
+
+.tether-string {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  pointer-events: none;
+}
+.tether-string path {
+  fill: none;
+  stroke: var(--tether-string, #111);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.tether-string circle {
+  fill: var(--tether-string, #111);
+}

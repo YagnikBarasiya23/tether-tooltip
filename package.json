@@ -1,0 +1,26 @@
+{
+  "name": "tether-tooltip",
+  "version": "1.0.0",
+  "description": "A tooltip tied to its target by an elastic string that stretches, sways and snaps back. Zero dependencies.",
+  "type": "module",
+  "main": "tether.js",
+  "exports": {
+    ".": "./tether.js",
+    "./tether.css": "./tether.css"
+  },
+  "files": ["tether.js", "tether.css"],
+  "keywords": ["tooltip", "popover", "onboarding", "spring", "animation", "vanilla-js"],
+  "author": "Yagnik Barasiya (https://www.yagnikbarasiya.com)",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/YagnikBarasiya23/tether-tooltip.git" },
+  "homepage": "https://yagnikbarasiya23.github.io/tether-tooltip/",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}

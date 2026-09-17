@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tether — a tooltip on an elastic string</title>
+  <meta name="description" content="Tether is a zero-dependency tooltip tied to its target by an elastic string: it trails behind when things move, sways, and snaps back. Accessible, MIT licensed.">
+  <meta property="og:title" content="Tether — a tooltip on an elastic string">
+  <meta property="og:description" content="Tooltips that trail, sway and snap back. Zero dependencies, MIT.">
+  <meta property="og:image" content="og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./tether.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#">Tether<span>.</span></a>
+    <nav aria-label="Project">
+      <span class="meta">MIT · 0 deps</span>
+      <a href="https://github.com/YagnikBarasiya23/tether-tooltip">GitHub</a>
+      <a href="https://www.yagnikbarasiya.com/components">More components</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Tooltip</p>
+      <h1 id="hero-title">Hints on a <em>string</em>, not stuck to the page.</h1>
+      <p class="lede">A tooltip that hangs from its target. It grows out of the element, trails a beat behind when the target moves, and the string sways with the pull before everything settles. Placement flips and slides to stay on screen.</p>
+    </section>
+
+    <section class="stage" aria-labelledby="playground-title">
+      <h2 id="playground-title" class="stage-label">Hover, focus or drag</h2>
+
+      <div class="toolbar" role="toolbar" aria-label="Editor">
+        <button type="button" data-tether="Bold · ⌘B" aria-label="Bold"><b>B</b></button>
+        <button type="button" data-tether="Italic · ⌘I" aria-label="Italic"><i>I</i></button>
+        <button type="button" data-tether="Insert link · ⌘K" aria-label="Link">↗</button>
+        <button type="button" data-tether="Comment — mention someone with @" aria-label="Comment">✎</button>
+        <button type="button" data-tether="Share this draft" data-placement="bottom" aria-label="Share">⤴</button>
+      </div>
+
+      <div class="playground" id="playground">
+        <div class="card" id="card" tabindex="0" aria-label="Draggable card. Use arrow keys to move it.">
+          <span class="grip" aria-hidden="true">⠿</span>
+          <strong>Weekly report</strong>
+          <span>Drag me around</span>
+        </div>
+      </div>
+
+      <form class="field" onsubmit="return false">
+        <label for="handle">Username</label>
+        <div class="field-row">
+          <input id="handle" placeholder="e.g. yagnik" autocomplete="off">
+          <button type="button" class="help" id="help" aria-label="Username rules">?</button>
+        </div>
+      </form>
+      <template id="rules">
+        <strong>Usernames</strong>
+        <ul><li>3–20 characters</li><li>Letters, numbers and _</li><li>Can be changed once a month</li></ul>
+      </template>
+    </section>
+
+    <section class="tune" aria-labelledby="tune-title">
+      <h2 id="tune-title">Feel</h2>
+      <label>Card tip side
+        <select id="placement">
+          <option value="top">Top</option>
+          <option value="right">Right</option>
+          <option value="bottom">Bottom</option>
+          <option value="left">Left</option>
+        </select>
+      </label>
+      <label>String length <output id="gap-out">44 px</output>
+        <input type="range" id="gap" min="16" max="120" value="44">
+      </label>
+      <label>Stiffness <output id="stiffness-out">150</output>
+        <input type="range" id="stiffness" min="40" max="400" value="150">
+      </label>
+      <label>Damping <output id="damping-out">14</output>
+        <input type="range" id="damping" min="4" max="40" value="14">
+      </label>
+    </section>
+
+    <section class="usage" aria-labelledby="usage-title">
+      <h2 id="usage-title">Use it</h2>
+<pre><code>&lt;link rel="stylesheet" href="tether.css"&gt;
+&lt;button data-tether="Insert link · ⌘K" aria-label="Link"&gt;↗&lt;/button&gt;
+
+&lt;script type="module"&gt;
+  import Tether from './tether.js';
+
+  Tether.mountAll();                         // every [data-tether]
+
+  const tip = new Tether(document.querySelector('#help'), {
+    content: document.querySelector('#rules').content.cloneNode(true),
+    placement: 'right',
+    interactive: true,
+  });
+&lt;/script&gt;</code></pre>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>MIT © 2026 <a href="https://www.yagnikbarasiya.com">Yagnik Barasiya</a></span>
+    <span>Respects reduced motion · linked with aria-describedby</span>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
